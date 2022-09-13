@@ -12,7 +12,7 @@
 		97D9D2A428CBDB980045E71B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97D9D2A328CBDB980045E71B /* Assets.xcassets */; };
 		97D9D2A728CBDB980045E71B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97D9D2A628CBDB980045E71B /* Preview Assets.xcassets */; };
 		97D9D2B328CF72E80045E71B /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D9D2B228CF72E80045E71B /* ContentViewModel.swift */; };
-		97D9D2B528CF73100045E71B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D9D2B428CF73100045E71B /* Character.swift */; };
+		97D9D2B528CF73100045E71B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D9D2B428CF73100045E71B /* Item.swift */; };
 		97D9D2B728CF73430045E71B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D9D2B628CF73430045E71B /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		97D9D2A628CBDB980045E71B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		97D9D2B128CC24A80045E71B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		97D9D2B228CF72E80045E71B /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		97D9D2B428CF73100045E71B /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		97D9D2B428CF73100045E71B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		97D9D2B628CF73430045E71B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +60,7 @@
 			children = (
 				97D9D2B128CC24A80045E71B /* Info.plist */,
 				97D9D29F28CBDB960045E71B /* DonwloadAsyncAwaitApp.swift */,
-				97D9D2B428CF73100045E71B /* Character.swift */,
+				97D9D2B428CF73100045E71B /* Item.swift */,
 				97D9D2A128CBDB960045E71B /* ContentView.swift */,
 				97D9D2B228CF72E80045E71B /* ContentViewModel.swift */,
 				97D9D2B628CF73430045E71B /* Extensions.swift */,
@@ -149,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97D9D2B728CF73430045E71B /* Extensions.swift in Sources */,
-				97D9D2B528CF73100045E71B /* Character.swift in Sources */,
+				97D9D2B528CF73100045E71B /* Item.swift in Sources */,
 				97D9D2A228CBDB960045E71B /* ContentView.swift in Sources */,
 				97D9D2A028CBDB960045E71B /* DonwloadAsyncAwaitApp.swift in Sources */,
 				97D9D2B328CF72E80045E71B /* ContentViewModel.swift in Sources */,

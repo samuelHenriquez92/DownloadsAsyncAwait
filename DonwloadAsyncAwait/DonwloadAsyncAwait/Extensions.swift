@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension Result {
+extension Item {
     init(
         data: Data
     ) throws {
-        self = try JSONDecoder().decode(Result.self, from: data)
+        self = try JSONDecoder().decode(Item.self, from: data)
     }
 }
 

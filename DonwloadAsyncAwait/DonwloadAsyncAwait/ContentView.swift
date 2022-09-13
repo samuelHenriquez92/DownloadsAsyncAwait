@@ -17,23 +17,45 @@ struct ContentView: View {
     // MARK: - View Lifecycle
 
     var body: some View {
-        VStack {
-            Button {
-                Task { await viewModel.evaluate() }
-            } label: {
-                Image(systemName: viewModel.isDownloaded ? "trash" : "arrow.down.to.line")
-                    .padding()
-                    .overlay(
-                        Circle()
-                            .stroke(.blue, lineWidth: 1)
-                    )
-                    .padding(2)
-            }
+        NavigationView {
+            ZStack {
+                switch viewModel.state {
+                case .idle:
+                    Text("Tap on download icon :D")
+                        .foregroundColor(.gray)
+                        .bold()
 
-            List(viewModel.characters, id: \.name) { character in
-                Text(character.name)
+                case .downloading:
+                    VStack {
+                        ProgressView()
+                            .tint(.gray)
+
+                        Text(viewModel.message)
+                            .foregroundColor(.gray)
+                    }
+                case .downloaded:
+                    if let image = viewModel.image {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .ignoresSafeArea(edges: .bottom)
+                    }
+                case .error:
+                    Text("Something was wrong! :(")
+                }
             }
-            .listStyle(.plain)
+            .navigationTitle("AsyncAwait")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        Task { await viewModel.evaluate() }
+                    } label: {
+                        Image(systemName: viewModel.isDownloaded ? "trash" : "arrow.down.to.line")
+                            .animation(.easeIn, value: viewModel.state == .downloading)
+                    }
+                }
+            }
         }
     }
 }

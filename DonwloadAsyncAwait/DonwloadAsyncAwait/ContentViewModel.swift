@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ContentViewModel: ObservableObject {
 
-    // MARK: - Variables Declaration
+    // MARK: - Variables Definition
 
     enum State {
         case idle
@@ -40,6 +40,8 @@ final class ContentViewModel: ObservableObject {
         }
     }
 
+    // MARK: - Private Methods
+
     @MainActor
     private func download() async {
         Task {
@@ -52,8 +54,6 @@ final class ContentViewModel: ObservableObject {
             }
         }
     }
-
-    // MARK: - Private Methods
 
     private func buildURLRequest() -> URLRequest {
         var request = URLRequest(url: .init(string: "https://api.unsplash.com/photos/random?client_id=\(apikey)")!)

@@ -18,8 +18,10 @@ final class ContentViewModel: ObservableObject {
         case error
     }
 
+    private let persistanceService: UserDefaults
     private let apikey = "238upBGdOHkLLxQgCyTVH9w3a68AhI6tdMWmhHCAKIw"
     private let secret = "kfgHU0bu7DI6Qad6AJg9Hs7bTJwwHYe11nVdltdit7M"
+    private let defaultsKey = "imageKey"
 
     @Published var state: State = .idle
     @Published var image: Image?
@@ -29,10 +31,20 @@ final class ContentViewModel: ObservableObject {
         image != nil
     }
 
+    // MARK: - Initializers
+
+    init(
+        persistanceService: UserDefaults = .standard
+    ) {
+        self.persistanceService = persistanceService
+        initialSetup()
+    }
+
     // MARK: - Public Methods
 
     func evaluate() async {
         if isDownloaded {
+            delete()
             image = nil
             state = .idle
         } else {
@@ -97,6 +109,9 @@ final class ContentViewModel: ObservableObject {
                     previous = progress
                 }
             }
+
+            save(data)
+
             return data
         } catch {
             setupError()
@@ -115,5 +130,26 @@ final class ContentViewModel: ObservableObject {
         DispatchQueue.main.async { [weak self] in
             self?.state = .error
         }
+    }
+
+    private func initialSetup() {
+        if let data = get() {
+            image = createImage(data)
+            state = .downloaded
+        }
+    }
+}
+
+extension ContentViewModel {
+    private func save(_ data: Data) {
+        persistanceService.set(data, forKey: defaultsKey)
+    }
+
+    private func get() -> Data? {
+        persistanceService.data(forKey: defaultsKey)
+    }
+
+    private func delete() {
+        persistanceService.removeObject(forKey: defaultsKey)
     }
 }

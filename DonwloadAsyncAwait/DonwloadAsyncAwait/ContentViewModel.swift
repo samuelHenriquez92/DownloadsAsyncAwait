@@ -108,10 +108,10 @@ final class ContentViewModel: ObservableObject {
                     }
                     previous = progress
                 }
+                if progress == 100 { // Completed
+                    save(data)
+                }
             }
-
-            save(data)
-
             return data
         } catch {
             setupError()
